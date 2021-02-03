@@ -17,6 +17,7 @@
 package lk.ac.mrt.cse.dbs.simpleexpensemanager.control;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -66,7 +67,7 @@ public abstract class ExpenseManager implements Serializable {
         if (!amount.isEmpty()) {
             double amountVal = Double.parseDouble(amount);
             transactionsHolder.logTransaction(transactionDate, accountNo, expenseType, amountVal);
-            accountsHolder.updateBalance(accountNo, expenseType, amountVal);
+//            accountsHolder.updateBalance(accountNo, expenseType, amountVal);
         }
     }
 
@@ -75,7 +76,7 @@ public abstract class ExpenseManager implements Serializable {
      *
      * @return
      */
-    public List<Transaction> getTransactionLogs() {
+    public List<Transaction> getTransactionLogs() throws ParseException {
         return transactionsHolder.getPaginatedTransactionLogs(10);
     }
 
